@@ -3,7 +3,10 @@ x_list = ['1', '2', '3']
 def erase(main_col, erase_col, pos):
     multiplier = main_col[pos]
     for i in range(pos, len(erase_col)):
-        main_col[i] = abs(main_col[i]) - abs(erase_col[i] * multiplier)
+        if main_col[pos] <= 0:
+            main_col[i] = main_col[i] + erase_col[i] * multiplier
+        elif main_col[pos] > 0:
+            main_col[i] = main_col[i] - erase_col[i] * multiplier
     return main_col
 
 def small_replace(list, public_pos, protected_pos):
