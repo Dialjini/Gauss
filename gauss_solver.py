@@ -37,7 +37,7 @@ def refresh_pos(matrix, pos):
 def divide(matrix, pos):
     divider = matrix[pos][pos]
     for i in range(pos, len(matrix[pos])):
-        matrix[pos][i] /= divider
+        matrix[pos][pos] /= divider
     return
 
 def get_answer(matrix):
