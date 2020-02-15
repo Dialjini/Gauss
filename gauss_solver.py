@@ -2,11 +2,12 @@ x_list = ['1', '2', '3']
 
 def erase(main_col, erase_col, pos):
     multiplier = main_col[pos]
+    minuser = 1
+    if erase_col[pos] >= 0:
+        minuser = -1
     for i in range(pos, len(erase_col)):
-        if main_col[pos] <= 0:
-            main_col[i] = main_col[i] + erase_col[i] * multiplier
-        elif main_col[pos] > 0:
-            main_col[i] = main_col[i] - erase_col[i] * multiplier
+        main_col[i] = minuser * main_col[i] + erase_col[i] * multiplier
+
     return main_col
 
 def small_replace(list, public_pos, protected_pos):
@@ -24,7 +25,7 @@ def refresh_pos(matrix, pos):
     max_pos = pos
     max_value = matrix[pos][pos]
     for i in range(len(matrix[pos]) - 1):
-        if max_value < matrix[pos][i]:
+        if abs(max_value) < abs(matrix[pos][i]):
             max_value = matrix[pos][i]
             max_pos = i
 
@@ -40,7 +41,7 @@ def refresh_pos(matrix, pos):
 def divide(matrix, pos):
     divider = matrix[pos][pos]
     for i in range(pos, len(matrix[pos])):
-        matrix[pos][pos] /= divider
+        matrix[pos][i] /= divider
     return
 
 def get_answer(matrix):
